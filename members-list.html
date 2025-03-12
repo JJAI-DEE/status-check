@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="th">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ตรวจสอบสถานะสมาชิก</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="members-list.css">
+    </head>
+    
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center text-orange">ตรวจสอบสถานะสมาชิก</h2>
+    <h4 class="text-center" id="school-name">โรงเรียน: </h4>
+
+    <!-- ตารางสมาชิก -->
+    <table class="table table-bordered text-center">
+        <thead class="bg-orange text-white">
+            <tr>
+                <th>ชื่อ</th>
+                <th>ตำแหน่ง</th>
+                <th>หน่วยงาน</th>
+                <th>เบอร์โทร</th>
+                <th>สถานะ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- ข้อมูลสมาชิกที่ดึงจากฐานข้อมูล -->
+        </tbody>
+    </table>
+
+    <!-- รายชื่อกิจกรรม -->
+    <h5>กิจกรรมที่เข้าร่วม</h5>
+    <div class="d-flex flex-wrap gap-2">
+        <button class="btn btn-outline-warning">กิจกรรมที่1</button>
+        <button class="btn btn-outline-warning">กิจกรรมที่2</button>
+        <button class="btn btn-outline-warning">กิจกรรมที่3</button>
+        <button class="btn btn-outline-warning">กิจกรรมที่4</button>
+        <button class="btn btn-outline-warning">กิจกรรมที่5</button>
+    </div>
+</div>
+
+<script>
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    window.onload = function() {
+        const schoolName = getQueryParam('school');
+        if (schoolName) {
+            document.getElementById("school-name").textContent = "โรงเรียน: " + schoolName;
+        }
+    };
+</script>
+
+</body>
+</html>

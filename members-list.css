@@ -1,0 +1,44 @@
+
+    .table {
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .table thead {
+        background-color: #FF7F50; /* สีส้ม */
+        color: white;
+    }
+
+    .table tbody tr:nth-child(odd) {
+        background-color: #f8f9fa; /* สีเทาอ่อน */
+    }
+
+    .table tbody tr:nth-child(even) {
+        background-color: #ffffff; /* สีขาว */
+    }
+
+    .table th, .table td {
+        padding: 12px;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .table tbody tr:hover {
+        background-color: #FFEDD5; /* สีส้มอ่อนเมื่อ hover */
+        cursor: pointer;
+    }
+
+    .btn-outline-warning {
+        background-color: transparent;
+        border-color: #FF7F50;
+        color: #FF7F50;
+        font-size: 14px;
+    }
+
+    .btn-outline-warning:hover {
+        background-color: #FF7F50;
+        color: white;
+    }
+

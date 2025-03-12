@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Status</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="my-stylesheet.css">
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2 class="text-center">ตรวจสอบสถานะสมาชิก</h2>
+
+  <div class="container text-center mt-4">
+    <h5>รายชื่อโรงเรียนที่อยู่ใน <span id="district-name"></span></h5>
+
+    <!-- ช่องค้นหา -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="โรงเรียน" class="form-control mb-3" >
+    </div>
+
+    <div id="buttonsContainer" class="row mt-4">
+        <div class="col-6 school-btn-container"><button class="btn btn-warning w-100 school-btn" onclick="loadView('members-list.html')">โรงเรียนที่1</button></div>
+        <div class="col-6 school-btn-container"><button class="btn btn-warning w-100 school-btn" onclick="loadView('members-list.html')">โรงเรียนที่2</button></div>
+        <div class="col-6 school-btn-container"><button class="btn btn-warning w-100 school-btn" onclick="loadView('members-list.html')">โรงเรียนที่3</button></div>
+        <div class="col-6 school-btn-container"><button class="btn btn-warning w-100 school-btn"onclick="loadView('members-list.html')">โรงเรียนที่4</button></div>
+    </div>
+</div>
+
+<script>
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    window.onload = function() {
+        const district = getQueryParam('district');
+        if (district) {
+            document.getElementById("district-name").textContent = district;
+        }
+    };
+
+    function loadView(page) {
+    console.log("Navigating to:", page);
+    window.location.href = page;
+}
+
+
+    document.getElementById("searchInput").addEventListener("input", function () {
+        let searchValue = this.value.toLowerCase();
+        let buttons = document.querySelectorAll(".school-btn-container");
+        let container = document.getElementById("buttonsContainer");
+        let matchedButtons = [];
+
+        buttons.forEach(buttonContainer => {
+            let button = buttonContainer.querySelector(".school-btn");
+            let text = button.innerText.toLowerCase();
+
+            if (text.includes(searchValue)) {
+                buttonContainer.style.display = "block"; 
+                matchedButtons.push(buttonContainer);
+            } else {
+                buttonContainer.style.display = "none";
+            }
+        });
+
+        if (searchValue === "") {
+            container.classList.remove("search-mode");
+        } else {
+            
+            if (matchedButtons.length > 0) {
+                container.classList.add("search-mode");
+                matchedButtons.forEach(btn => container.appendChild(btn)); 
+            }
+        }
+    });
+</script>
+
+
+
+</body>
+</html>
